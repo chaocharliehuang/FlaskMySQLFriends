@@ -13,10 +13,38 @@
         {% endfor %}
         <h2>Add a Friend:</h2>
         <form action="/friends" method="POST">
-            <label for="first_name">First Name:</label><input type="text" name="first_name" id="first_name">
-            <label for="last_name">Last Name:</label><input type="text" name="last_name" id="last_name">
-            <label for="occupation">Occupation:</label><input type="text" name="occupation" id="occupation">
+            <label for="first_name">First Name: </label><input type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name: </label><input type="text" name="last_name" id="last_name">
+            <label for="occupation">Occupation: </label><input type="text" name="occupation" id="occupation">
             <input type="submit" value="Add">
         </form>
+
+        <h2>Update Friend Info:</h2>
+        <form action="" id="form_update" method="POST">
+            <label for="friend_id_update">ID: </label><input type="text" name="friend_id" id="friend_id_update">
+            <label for="first_name_update">First Name: </label><input type="text" name="first_name" id="first_name_update">
+            <label for="last_name_update">Last Name: </label><input type="text" name="last_name" id="last_name_update">
+            <label for="occupation_update">Occupation: </label><input type="text" name="occupation" id="occupation_update">
+            <input type="submit" value="Update">
+        </form>
+
+        <h2>Delete a Friend:</h2>
+        <form action="" id="form_delete" method="POST">
+            <label for="friend_id_delete">ID: </label><input type="text" name="friend_id" id="friend_id_delete">
+            <input type="submit" value="Delete">
+        </form>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $('#form_update').submit(function() {
+                var friend_id_update = $('#friend_id_update').val();
+                this.action = 'update_friend/' + friend_id_update;
+            });
+
+            $('#form_delete').submit(function() {
+                var friend_id_delete = $('#friend_id_delete').val();
+                this.action = 'delete_friend/' + friend_id_delete;
+            });
+        </script>
     </body>
 </html>
